@@ -11,6 +11,7 @@ class User extends Authenticatable
 
     protected $appends = [
         'avatar',
+        'profileUrl'
     ];
 
     protected $fillable = [
@@ -20,12 +21,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    // change specify key from id to username | model binding
-    public function getRouteKeyName()
-    {
-        return 'username';
-    }
 
     public function tweets()
     {
@@ -37,8 +32,25 @@ class User extends Authenticatable
         return 'https://www.gravatar.com/avatar/' . md5($this->email) . '?s=45&d=mm';
     }
 
+    /*
+    *  Accessor
+    *  ...Atribute() is creating accessor to appends
+    */
     public function getAvatarAttribute()
     {
         return $this->getAvatar();
+    }
+
+    public function getProfileUrlAttribute()
+    {
+        return route('user.index', $this);
+    }
+
+    /*
+    *  change specify key from id to username | model binding
+    */
+    public function getRouteKeyName()
+    {
+        return 'username';
     }
 }

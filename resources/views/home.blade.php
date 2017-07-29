@@ -20,7 +20,7 @@
                     </div>
                     <div class="media-body">
                         <div class="user">
-                            <a href=""><strong>@{{ tweet.user.username }}</strong></a> - @{{ tweet.humanCreatedAt }}
+                            <a v-bind:href="tweet.user.profileUrl"><strong>@{{ tweet.user.username }}</strong></a> - @{{ tweet.humanCreatedAt }}
                         </div>
                         <p>@{{ tweet.body }}</p>
                     </div>
