@@ -58,5 +58,9 @@ const app = new Vue({
     },
     mounted: function() {
         this.getTweets();
+
+        setInterval(function() {
+            this.getTweets();
+        }.bind(this), 10000);
     }
 });

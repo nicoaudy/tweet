@@ -840,6 +840,10 @@ var app = new Vue({
     },
     mounted: function mounted() {
         this.getTweets();
+
+        setInterval(function () {
+            this.getTweets();
+        }.bind(this), 10000);
     }
 });
 
