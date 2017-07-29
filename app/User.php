@@ -21,6 +21,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // change specify key from id to username | model binding
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
     public function tweets()
     {
         return $this->hasMany(Tweet::class);
