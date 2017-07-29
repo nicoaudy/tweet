@@ -12,6 +12,18 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .expand-transition {
+            transition: all .3s ease;
+            height: auto;
+            overflow: hidden;
+        }
+        .expand-enter, .expand-leave {
+            height: 0;
+            padding: 0 20px;
+            opacity: 0;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
