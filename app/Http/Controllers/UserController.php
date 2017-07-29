@@ -11,4 +11,13 @@ class UserController extends Controller
     {
         return view('users.index')->withUser($user);
     }
+
+    public function follow(Request $request, User $user)
+    {
+        if ($request->user()->canFollow($user)) {
+            $request->user()->following()->attach($user);
+        }
+
+        return redirect()->back();
+    }
 }

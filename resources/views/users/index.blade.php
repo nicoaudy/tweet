@@ -10,7 +10,7 @@
                     @if(auth()->user()->isFollowing($user))
                         <a href="">Unfollow</a>
                     @else
-                        <a href="">Follow</a>
+                        <a href="{{ route('user.follow', $user) }}">Follow</a>
                     @endif
                 @endif
             </div>
