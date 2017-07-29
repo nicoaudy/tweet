@@ -5,6 +5,14 @@
         <div class="row">
             <div class="col-md-12">
                 <h3>{{ $user->username }}</h3>
+
+                @if(auth()->user()->isNot($user))
+                    @if(auth()->user()->isFollowing($user))
+                        <a href="">Unfollow</a>
+                    @else
+                        <a href="">Follow</a>
+                    @endif
+                @endif
             </div>
         </div>
     </div>
