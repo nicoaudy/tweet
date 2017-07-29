@@ -37,6 +37,15 @@ class User extends Authenticatable
         return (bool) $this->following->where('id', $user->id)->count();
     }
 
+    public function canFollow(User $user)
+    {
+        if (!$this->isNot($user)) {
+            return false;
+        }
+
+        return !$this->isFollowing($user);
+    }
+
     public function following()
     {
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'follower_id');
