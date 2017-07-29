@@ -836,6 +836,13 @@ var app = new Vue({
             }).done(function (data) {
                 this.tweets = data.tweets;
             }.bind(this));
+        },
+
+        getMoreTweets: function getMoreTweets(e) {
+            e.preventDefault();
+
+            this.limit = this.limit + this.limit;
+            this.getTweets();
         }
     },
     mounted: function mounted() {
