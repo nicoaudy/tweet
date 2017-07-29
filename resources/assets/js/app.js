@@ -22,7 +22,8 @@ const app = new Vue({
     data: {
         tweet: {
             body: '',
-        }
+        },
+        tweets: []
     },
     methods: {
         postTweet (e) {
@@ -35,8 +36,9 @@ const app = new Vue({
                 data: {
                     'body': this.tweet.body
                 }
-            }).done(function() {
+            }).done(function(data) {
                 this.tweet.body = '';
+                this.tweets.unshift(data);
             }.bind(this));
 
         }

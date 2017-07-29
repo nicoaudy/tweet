@@ -11,8 +11,21 @@
                 </div>
             </form>
         </div>
-        <div class="col-md-4">
-            Timeline
+        <div class="col-md-8">
+            <p v-if="!tweets.length">No tweets to see here yet. Follow someone and make it happen.</p>
+            <div class="tweets" v-if="tweets.length">
+                <div class="media" v-for="tweet in tweets" track-by="id">
+                    <div class="media-left">
+                        <img src="" class="media-object">
+                    </div>
+                    <div class="media-body">
+                        <div class="user">
+                            <a href=""><strong>@{{ tweet.user.username }}</strong></a>
+                        </div>
+                        <p>@{{ tweet.body }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
