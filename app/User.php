@@ -27,6 +27,11 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class);
     }
 
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'follower_id');
+    }
+
     public function getAvatar()
     {
         return 'https://www.gravatar.com/avatar/' . md5($this->email) . '?s=45&d=mm';
