@@ -35,7 +35,9 @@ const app = new Vue({
                 data: {
                     'body': this.tweet.body
                 }
-            });
+            }).done(function() {
+                this.tweet.body = '';
+            }.bind(this));
 
         }
     }
