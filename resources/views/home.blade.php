@@ -16,7 +16,7 @@
             <div class="tweets" v-if="tweets.length">
                 <div class="media" v-for="tweet in tweets" track-by="id">
                     <div class="media-left">
-                        <img src="" class="media-object">
+                        <img v-bind:src="tweet.user.avatar" class="media-object">
                     </div>
                     <div class="media-body">
                         <div class="user">

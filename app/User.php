@@ -9,20 +9,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $appends = [
+        'avatar',
+    ];
+
     protected $fillable = [
         'username', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
@@ -30,5 +24,15 @@ class User extends Authenticatable
     public function tweets()
     {
         return $this->hasMany(Tweet::class);
+    }
+
+    public function getAvatar()
+    {
+        return 'https://www.gravatar.com/avatar/' . md5($this->email) . '?s=45&d=mm';
+    }
+
+    public function getAvatarAttribute()
+    {
+        return $this->getAvatar();
     }
 }
