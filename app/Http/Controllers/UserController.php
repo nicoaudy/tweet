@@ -9,6 +9,6 @@ class UserController extends Controller
 {
     public function index(User $user)
     {
-        dd($user);
+        return view('users.index')->withUser($user);
     }
 }
