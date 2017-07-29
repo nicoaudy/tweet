@@ -805,7 +805,8 @@ var app = new Vue({
         tweet: {
             body: ''
         },
-        tweets: []
+        tweets: [],
+        limit: 20
     },
     methods: {
         postTweet: function postTweet(e) {
@@ -822,7 +823,23 @@ var app = new Vue({
                 this.tweet.body = '';
                 this.tweets.unshift(data);
             }.bind(this));
+        },
+
+        getTweets: function getTweets() {
+            $.ajax({
+                url: '/tweets',
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    limit: this.limit
+                }
+            }).done(function (data) {
+                this.tweets = data.tweets;
+            }.bind(this));
         }
+    },
+    mounted: function mounted() {
+        this.getTweets();
     }
 });
 

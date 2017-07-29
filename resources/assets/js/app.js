@@ -23,10 +23,11 @@ const app = new Vue({
         tweet: {
             body: '',
         },
-        tweets: []
+        tweets: [],
+        limit: 20
     },
     methods: {
-        postTweet (e) {
+        postTweet: function(e) {
             e.preventDefault();
 
             $.ajax({
@@ -40,7 +41,22 @@ const app = new Vue({
                 this.tweet.body = '';
                 this.tweets.unshift(data);
             }.bind(this));
+        },
 
+        getTweets: function() {
+            $.ajax({
+                url: '/tweets',
+                dataType: 'json',
+                type: 'get',
+                data: {
+                    limit: this.limit
+                }
+            }).done(function(data){
+                this.tweets = data.tweets;
+            }.bind(this));
         }
+    },
+    mounted: function() {
+        this.getTweets();
     }
 });
