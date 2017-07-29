@@ -9,4 +9,5 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('user/{user}', 'UserController@index')->name('user.index');
     Route::get('user/{user}/follow', 'UserController@follow')->name('user.follow');
+    Route::get('user/{user}/unfollow', 'UserController@unfollow')->name('user.unfollow');
 });
