@@ -806,7 +806,8 @@ var app = new Vue({
             body: ''
         },
         tweets: [],
-        limit: 20
+        limit: 10,
+        total: 0
     },
     methods: {
         postTweet: function postTweet(e) {
@@ -835,6 +836,7 @@ var app = new Vue({
                 }
             }).done(function (data) {
                 this.tweets = data.tweets;
+                this.total = data.total;
             }.bind(this));
         },
 

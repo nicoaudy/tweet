@@ -27,7 +27,9 @@
                 </div>
             </div>
             <hr>
-            <a href="#" v-on:click="getMoreTweets($event)">Show more</a>
+            <div v-if="total !== 0">
+                <a href="#" v-on:click="getMoreTweets($event)">Show more</a>
+            </div>
         </div>
     </div>
 </div>
