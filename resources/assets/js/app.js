@@ -18,5 +18,25 @@ window.Vue = require('vue');
 Vue.component('example', require('./components/Example.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#timeline',
+    data: {
+        tweet: {
+            body: '',
+        }
+    },
+    methods: {
+        postTweet (e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: '/tweets',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    'body': this.tweet.body
+                }
+            });
+
+        }
+    }
 });
